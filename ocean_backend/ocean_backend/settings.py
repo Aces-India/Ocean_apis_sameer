@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'ML_algo',
     'rest_framework',
+    'api'
 ]
 
 MIDDLEWARE = [
