@@ -1,5 +1,4 @@
 import pandas as pd
-from api.cache.cache_data import get_cache_data
 
 
 def sort(action:bool, x:str , y:str)->dict:

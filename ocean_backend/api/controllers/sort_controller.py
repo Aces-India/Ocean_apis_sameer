@@ -3,7 +3,6 @@ from django.http import JsonResponse
 from rest_framework.decorators import api_view
 import json
 
-from ML_algo.services.predict_service import prediction
 from api.services.sort_service import sort
 
 
