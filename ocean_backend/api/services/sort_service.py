@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-def sort(action:bool, x:str , y:str)->dict:
+def sort(action: bool, x: str, y: str) -> dict:
     """
     sorts a list of given actions with dataset uploaded from the user,
     return the dictionary that contains the sorted list of columns and rows,
@@ -13,25 +13,28 @@ def sort(action:bool, x:str , y:str)->dict:
 
     Returns:
         dict: sorted column names and row values 
-    """    
+    """
     # df:pd.DataFrame = get_cache_data()
     df = pd.read_excel("api/services/sales.xlsx")
-    
+
     # print("\n================================ Im in sort API entry point================================\n ",
     #         type(df),'\n',df.columns,f'\n================================ {type(action)}================================'
     #         )
     if action == 'ascending':
         agg_df = df.groupby(by=[x]).aggregate({y: sum})
         sorted_df = agg_df.sort_values(y, ascending=True)
-        print( "=========================================================\n",type(sorted_df), '\n ',sorted_df)     
+        # print("=========================================================\n",
+        #       type(sorted_df), '\n ', sorted_df)
     elif action == 'descending':
         agg_df = df.groupby(by=[x]).aggregate({y: sum})
         sorted_df = agg_df.sort_values(y, ascending=False)
-            
-        print( "=========================================================\n",type(sorted_df), '\n ',sorted_df) 
+
+        # print("=========================================================\n",
+        #       type(sorted_df), '\n ', sorted_df)
     X = tuple(sorted_df[y].keys())
     Y = tuple(sorted_df[y].values)
-    sort_dict = {'column':X, 'rows':Y }
-    
-    print(f'================================================================{sort_dict}')
+    sort_dict = {'column': X, 'rows': Y}
+
+    # print(
+    #     f'================================================================{sort_dict}')
     return sort_dict
