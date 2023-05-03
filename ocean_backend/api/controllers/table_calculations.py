@@ -2,6 +2,7 @@ from django.shortcuts import HttpResponse
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
 import json
+from requests import Response 
 
 from api.services.table_calculations import table_calc
 
@@ -19,5 +20,5 @@ def table_calc_api(request):
         # print( "=========================================================\n",type(dict_data), '\n ',dict_data)
         result = table_calc(heading=tuple(dict_data.values())[0], side_heading=tuple(
             dict_data.values())[1], text=tuple(dict_data.values())[2])
-
-        return JsonResponse(result, safe=False, status=200)
+        print(type(json.dumps(result)))
+        return Response(result)
