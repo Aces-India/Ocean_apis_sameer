@@ -11,7 +11,7 @@ from api.services.data import handle_uploaded_file
 def upload_file(request):
     if request.method == "POST":
         form = UploadFileForm(request.POST, request.FILES)
-        print(request.FILES)
+        print(request.FILES["file"])
         # if form.is_valid():
         handle_uploaded_file(request.FILES["file"])
         return HttpResponse("ok file uploaded successfully")

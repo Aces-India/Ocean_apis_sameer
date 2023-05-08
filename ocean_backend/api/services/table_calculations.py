@@ -2,7 +2,7 @@ import pandas as pd
 
 def table_calc(heading, side_heading,text):
     
-    df = pd.read_excel("api/services/sales.xlsx")
+    df = pd.read_excel("api/services/data.xlsx")
     
     table_df= df.groupby([heading,side_heading]).aggregate({text:sum})
     
