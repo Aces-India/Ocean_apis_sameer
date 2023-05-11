@@ -21,4 +21,4 @@ def table_calc_api(request):
         result = table_calc(heading=tuple(dict_data.values())[0], side_heading=tuple(
             dict_data.values())[1], text=tuple(dict_data.values())[2])
         print(type(json.dumps(result)))
-        return Response(result)
+        return JsonResponse(result, safe=False, status=200)
