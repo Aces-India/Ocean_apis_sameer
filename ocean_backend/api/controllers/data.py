@@ -11,10 +11,10 @@ from api.services.data import handle_uploaded_file
 def upload_file(request):
     if request.method == "POST":
         form = UploadFileForm(request.POST, request.FILES)
-        print(request.FILES["file"])
+        print(f'{request.FILES["file"]}'.split('.')[1])
         # if form.is_valid():
-        handle_uploaded_file(request.FILES["file"])
-        return HttpResponse("ok file uploaded successfully")
+        response = handle_uploaded_file(file= request.FILES["file"], type_=f'{request.FILES["file"]}'.split('.')[1])
+        return HttpResponse(response)
     else:
         form = UploadFileForm()
     return HttpResponse('"form": form')
