@@ -14,8 +14,14 @@ def sort(action: bool, x: str, y: str) -> dict:
     Returns:
         dict: sorted column names and row values 
     """
-    # df:pd.DataFrame = get_cache_data()
-    df = pd.read_excel("api/services/data.xlsx")
+    try:
+        print('trying in excel and try block')
+        df = pd.read_excel("api/services/data.xlsx")
+        print('worked with excel only')
+    except:
+        print('failed to load excel')
+        df = pd.read_csv("api/services/data.csv") 
+        print('loaded successfully csv')
 
     # print("\n================================ Im in sort API entry point================================\n ",
     #         type(df),'\n',df.columns,f'\n================================ {type(action)}================================'

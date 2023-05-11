@@ -2,7 +2,15 @@ import pandas as pd
 
 def table_calc(heading, side_heading,text):
     
-    df = pd.read_excel("api/services/data.xlsx")
+    
+    try:
+        print('trying in excel and try block')
+        df = pd.read_excel("api/services/data.xlsx")
+        print('worked with excel only')
+    except:
+        print('failed to load excel')
+        df = pd.read_csv("api/services/data.csv") 
+        print('loaded successfully csv')
     
     table_df= df.groupby([heading,side_heading]).aggregate({text:sum})
     
