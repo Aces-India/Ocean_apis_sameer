@@ -11,7 +11,7 @@ def table_calc(heading, side_heading,text):
         print('failed to load excel')
         df = pd.read_csv("api/services/data.csv") 
         print('loaded successfully csv')
-    
+    "errorrr here"
     table_df= df.groupby([heading,side_heading]).aggregate({text:sum})
     
     unstack_df = table_df.unstack(-2)
